@@ -4,15 +4,16 @@ import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
+    <el-menu
+    mode="horizontal"
+    background-color="#545c64"
+    text-color="#fff">
+        <el-menu-item index="0">聚合资讯</el-menu-item>
+        <el-menu-item index="1">实时资讯</el-menu-item>
+    </el-menu>
     <el-container>
         <el-header>
-            <el-menu 
-            mode="horizontal"
-            background-color="#545c64"
-            text-color="#fff">
-                <el-menu-item index="0">聚合资讯</el-menu-item>
-                <el-menu-item index="1">实时资讯</el-menu-item>
-            </el-menu>
+            
         </el-header>
         <el-main></el-main>
     </el-container>
