@@ -1,7 +1,7 @@
 <template>
     <div class="about">
-        <h1>This is an about page</h1>
-        <button @click="updatelivenews">{{ bttext }}</button>
+        <button @click="updatenews('hotnews',hottext)">更新热搜</button>
+        <button @click="updatenews('livenews',livetext)">更新快讯</button>
     </div>
 </template>
 
@@ -20,26 +20,27 @@ import axios from 'axios';
 import qs from 'qs';
 import { ref } from 'vue';
 
-const bttext = ref('现在更新');
-getlivenews();
+const hottext = ref('更新热搜');
+const livetext = ref('更新快讯')
+// getlivenews();
 
 function getlivenews() {
-    axios.get('/api/get/livenews').then(response => {
+    axios.get('/api/livenews').then(response => {
         console.log(response);
     });
 }
 
-function updatelivenews() {
-    bttext.value = '更新中';
+function updatenews(cate) {
+    ElMessage('更新中')
     axios
         .post(
             '/api/update',
             qs.stringify({
-                category: 'livenews'
+                category: cate
             })
         )
         .then(response => {
-            bttext.value = '更新完成';
+            ElMessage.success('更新成功')
             console.log(response);
         });
 }

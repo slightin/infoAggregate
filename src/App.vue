@@ -1,25 +1,31 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
-// import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router';
+import { useRoute } from 'vue-router'
+const route = useRoute()
 </script>
 
 <template>
-    <el-menu
-    mode="horizontal"
-    background-color="#545c64"
-    text-color="#fff">
-        <el-menu-item index="0">聚合资讯</el-menu-item>
-        <el-menu-item index="1">实时资讯</el-menu-item>
+    <el-menu mode="horizontal" :default-active='route.path' router background-color="#545c64" text-color="#fff">
+        <!-- <el-text id='logot'>聚合资讯</el-text> -->
+        <el-menu-item index="/" id="home">聚合资讯
+        <!-- <div class='backhome'>回到首页</div> --></el-menu-item>
+        <el-menu-item index="/livenews">实时快讯</el-menu-item>
+        <el-menu-item index="/hotnews">聚合热榜</el-menu-item>
+        <el-menu-item index="/about">关于</el-menu-item>
     </el-menu>
-    <el-container>
-        <el-header>
-            
-        </el-header>
-        <el-main></el-main>
-    </el-container>
+    <router-view></router-view>
 </template>
 
 <style scoped>
+    /* .backhome{
+        top:-100px;
+        padding: 0 20px 0 20px;
+        position: fixed;
+        background-color: #545c64;
+    }
+    #home:hover .backhome{
+        top:0px;
+    } */
 /* header {
     line-height: 1.5;
     max-height: 100vh;
