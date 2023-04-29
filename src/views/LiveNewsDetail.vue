@@ -31,7 +31,7 @@ axios
     });
 </script>
 
-<style>
+<style scoped>
 .newscard {
     max-width: 80%;
     margin-top: 100px;

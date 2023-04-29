@@ -31,7 +31,7 @@ console.log(newslist)
 getlivenews('/api/livenews')
 </script>
 
-<style>
+<style scoped>
 .newsitem {
     width: 90%
 }
