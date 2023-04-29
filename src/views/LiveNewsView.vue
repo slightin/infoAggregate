@@ -37,7 +37,7 @@ getlivenews('/api/livenews')
 }
 
 .newsitem:hover {
-    background-color: cornsilk;
+    background-color: #B2DBBF;
 }
 
 .timeline{
