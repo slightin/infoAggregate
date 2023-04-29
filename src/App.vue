@@ -11,7 +11,7 @@ const route = useRoute()
         <!-- <div class='backhome'>回到首页</div> --></el-menu-item>
         <el-menu-item index="/livenews">实时快讯</el-menu-item>
         <el-menu-item index="/hotnews">聚合热榜</el-menu-item>
-        <el-menu-item index="/about">关于</el-menu-item>
+        <el-menu-item index="/about">测试用</el-menu-item>
     </el-menu>
     <router-view></router-view>
 </template>

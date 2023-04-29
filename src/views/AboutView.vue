@@ -1,7 +1,7 @@
 <template>
     <div class="about">
-        <button @click="updatenews('hotnews',hottext)">更新热搜</button>
-        <button @click="updatenews('livenews',livetext)">更新快讯</button>
+        <button @click="updatenews('hotnews', hottext)">更新热搜</button>
+        <button @click="updatenews('livenews', livetext)">更新快讯</button>
     </div>
 </template>
 
@@ -17,11 +17,12 @@
 
 <script setup>
 import axios from 'axios';
+import { ElMessage } from 'element-plus';
 import qs from 'qs';
 import { ref } from 'vue';
 
 const hottext = ref('更新热搜');
-const livetext = ref('更新快讯')
+const livetext = ref('更新快讯');
 // getlivenews();
 
 function getlivenews() {
@@ -31,7 +32,7 @@ function getlivenews() {
 }
 
 function updatenews(cate) {
-    ElMessage('更新中')
+    ElMessage('更新中');
     axios
         .post(
             '/api/update',
@@ -40,8 +41,11 @@ function updatenews(cate) {
             })
         )
         .then(response => {
-            ElMessage.success('更新成功')
+            ElMessage.success('更新成功');
             console.log(response);
+        })
+        .catch(err => {
+            ElMessage.error('出错啦');
         });
 }
 </script>
