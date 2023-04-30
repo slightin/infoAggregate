@@ -18,7 +18,7 @@
 
 <script setup>
 import axios from 'axios';
-import resetapi from '../utils'
+import {resetapi} from '../utils'
 
 let newslist = ref({})
 function getlivenews(url) {

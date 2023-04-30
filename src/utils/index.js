@@ -3,7 +3,7 @@
 function resetapi(url) {
     return url.replace(/^.*\/api/, '/api')
 }
-
+// 浮点数最大位数为2，但不强制写0
 function changeTwoDecimal(x) {
     let f_x = parseFloat(x);
     if (isNaN(f_x)) {
