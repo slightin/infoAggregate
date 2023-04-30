@@ -1,7 +1,7 @@
 <template>
     <div class='pagebutton'>
-        <el-button v-if="newslist.previous" @click="getlivenews(resetapi(newslist.previous))">上一页</el-button>
-        <el-button v-if="newslist.next" @click="getlivenews(resetapi(newslist.next))">下一页</el-button>
+        <el-button type="primary" round v-if="newslist.previous" @click="getlivenews(resetapi(newslist.previous))">上一页</el-button>
+        <el-button type="primary" round v-if="newslist.next" @click="getlivenews(resetapi(newslist.next))">下一页</el-button>
     </div>
     <el-timeline class="timeline">
         <el-timeline-item v-for="item in newslist.results" :id="'news' + item.id" :timestamp="item.pub_time"
@@ -41,7 +41,7 @@ getlivenews('/api/livenews')
 }
 
 .timeline{
-    margin-top: 20px;
+    padding-top: 20px;
     margin-bottom: 40px;
 }
 

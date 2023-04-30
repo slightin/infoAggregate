@@ -13,10 +13,23 @@ const route = useRoute()
         <el-menu-item index="/hotnews">聚合热榜</el-menu-item>
         <el-menu-item index="/about">测试用</el-menu-item>
     </el-menu>
-    <router-view></router-view>
+    <div id='rv'>
+    <router-view></router-view></div>
 </template>
 
 <style scoped>
+    .el-menu--horizontal{
+        position: fixed;
+        z-index: 100;
+        top:0px;
+        width: 100vw;
+        border: 0;
+        height:55px;
+    }
+    
+    #rv{
+        margin-top: 55px;
+    }
     /* .backhome{
         top:-100px;
         padding: 0 20px 0 20px;
