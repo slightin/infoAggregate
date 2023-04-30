@@ -1,14 +1,19 @@
 <template>
     <el-container>
         <el-aside width="200px">
-            <el-menu default-active="1">
+            <el-menu default-active="1" background-color="#4A525A" text-color="#ffffff">
                 <el-menu-item index="1" @click="gethot('weibo')">微博热搜</el-menu-item>
                 <el-menu-item index="2" @click="gethot('zhihu')">知乎热榜</el-menu-item>
             </el-menu>
         </el-aside>
         <el-main>
-            <el-scrollbar height='calc(100vh - 98.4px)'>
-                <el-card v-for='item in hotlist'>{{item.title}}</el-card>
+            <el-scrollbar height='calc(100vh - 78.4px)'>
+                <a v-for='item in hotlist' :href='item.link'>
+                    <el-card class='icard'>
+                    <el-link>{{item.title}}</el-link>
+                    </el-card>
+                </a>
+                <el-backtop right="50" bottom="50" target=".el-scrollbar__wrap"/>
             </el-scrollbar>
         </el-main>
     </el-container>
@@ -23,12 +28,20 @@
             hotlist.value=res.data
         }).catch(err=>{
             ElMessage.error('oops,出错啦')
-            console.log('err')
+            console.log(err)
         })
     }
-    console.log(window.innerHeight)
     gethot('weibo')
 </script>
 
-<style>
+<style scoped>
+    .icard{
+        margin: 10px;
+    }
+    .icard:hover{
+        background-color: #B2DBBF;
+    }
+    .el-main{
+        padding: 10px 20px 10px 20px;
+    }
 </style>
