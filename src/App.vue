@@ -28,7 +28,7 @@ const route = useRoute()
     }
     
     #rv{
-        margin-top: 55px;
+        padding-top: 55px;
     }
     /* .backhome{
         top:-100px;

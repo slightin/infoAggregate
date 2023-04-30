@@ -1,7 +1,7 @@
 <template>
     <div class='pagebutton'>
-        <el-button type="primary" round v-if="newslist.previous" @click="getlivenews(resetapi(newslist.previous))">上一页</el-button>
-        <el-button type="primary" round v-if="newslist.next" @click="getlivenews(resetapi(newslist.next))">下一页</el-button>
+        <el-button type="primary" round v-if="newslist.previous!=null" @click="getlivenews(resetapi(newslist.previous))">上一页</el-button>
+        <el-button type="primary" round v-if="newslist.next!=null" @click="getlivenews(resetapi(newslist.next))">下一页</el-button>
     </div>
     <el-timeline class="timeline">
         <el-timeline-item v-for="item in newslist.results" :id="'news' + item.id" :timestamp="item.pub_time"
@@ -20,13 +20,13 @@
 import axios from 'axios';
 import resetapi from '../utils'
 
-let newslist = ref()
+let newslist = ref({})
 function getlivenews(url) {
     axios.get(url).then(response => {
         newslist.value = response.data
     }).catch(error => { console.log(error) })
 }
-console.log(newslist)
+// console.log(newslist)
 
 getlivenews('/api/livenews')
 </script>
