@@ -7,10 +7,11 @@
             </el-menu>
         </el-aside>
         <el-main>
-            <el-scrollbar height='calc(100vh - 90px)'>
-                <a v-for='item in hotlist' :href='item.link'>
+            <el-scrollbar height='calc(100vh - 80px)'>
+                <a v-for='item in hotlist' :href='item.link' target="_blank">
                     <el-card class='icard'>
-                    <el-link>{{item.title}}</el-link>
+                        <el-link>{{item.rank}} {{item.title}}</el-link>
+                        <el-text class='ihot'><i class="iconfont icon-fire"></i>{{changeTwoDecimal(item.hot/1E4)}} 万热度</el-text>
                     </el-card>
                 </a>
                 <el-backtop :right="50" :bottom="50" target=".el-scrollbar__wrap"/>
@@ -21,6 +22,7 @@
 
 <script setup>
     import axios from 'axios'
+    import {changeTwoDecimal} from '../utils/index.js'
     
     const hotlist = ref([])
     function gethot(src){
@@ -46,5 +48,8 @@
     }
     .fa-brands, .iconfont{
         padding: 0 10px 0 10px;
+    }
+    .ihot{
+        float: right;
     }
 </style>
