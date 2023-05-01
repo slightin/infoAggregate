@@ -13,7 +13,7 @@
             </el-card>
         </el-timeline-item>
     </el-timeline>
-    <el-backtop :right="50" :bottom="60" />
+    <el-backtop :right="50" :bottom="70"><i class='iconfont icon-backtop'></i></el-backtop>
 </template>
 
 <script setup>
