@@ -5,13 +5,20 @@ import {
 import LiveNewsView from '../views/LiveNewsView.vue'
 import LiveNewsDetail from '../views/LiveNewsDetail.vue'
 import HotNewsView from '../views/HotNewsView.vue'
+import HomeView from '../views/HomeView.vue'
+import InfoDetailVue from '../views/InfoDetail.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [{
             path: '/',
             name: 'home',
-            component: LiveNewsView
+            component: HomeView
+        },
+        {
+            path: '/info/:id(\\d+)',
+            name: 'infodetail',
+            component: InfoDetailVue
         },
         {
             path: '/livenews',
