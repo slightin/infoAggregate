@@ -1,18 +1,32 @@
 <template>
     <div class="about">
-        <button @click="updatenews('hotnews', hottext)">更新热搜</button>
-        <button @click="updatenews('livenews', livetext)">更新快讯</button>
+        <el-button @click="updatenews('hotnews', hottext)">更新热搜</el-button>
+        <el-button @click="updatenews('livenews', livetext)">更新快讯</el-button>
+        <br />
+        <el-card class="wordcloud" :body-style="{ height: '100%', width:'100%'}"><img :src="'/api/wordcloud/hot?t='+new Date().getTime()" /></el-card>
     </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
+<style scoped>
+.about {
+    height: calc(100vh - 55px);
+}
+.wordcloud {
+    height: 70%;
+    width: 60%;
+}
+img {
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}
+/* @media (min-width: 1024px) {
     .about {
-        min-height: 100vh;
+        min-height: calc(100vh - 55px);
         display: flex;
         align-items: center;
     }
-}
+} */
 </style>
 
 <script setup>
