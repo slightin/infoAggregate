@@ -54,6 +54,8 @@
     }
     .icard:hover{
         background-color: #B2DBBF;
+        padding-left: 10px;
+        margin-left: 5px;
     }
     .el-main{
         padding: 10px 20px 10px 20px;
@@ -63,6 +65,9 @@
     }
     .ihot{
         float: right;
+    }
+    .rank{
+        font-size: larger;
     }
     .rank, .icon-fire{
         color: #FA7921;
