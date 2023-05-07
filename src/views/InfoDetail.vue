@@ -38,6 +38,9 @@ axios
 }
 </style>
 <style>
+    #infobody {
+        padding: 50px;
+    }
     #infobody p{
         text-indent: 2em;
         font-size: 18px;
