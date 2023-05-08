@@ -55,7 +55,10 @@
     .icard:hover{
         background-color: #B2DBBF;
         padding-left: 10px;
-        margin-left: 5px;
+        margin-left: 9px;
+    }
+    .icard:hover .rank {
+        font-weight: bold;
     }
     .el-main{
         padding: 10px 20px 10px 20px;

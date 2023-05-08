@@ -29,7 +29,6 @@ const route = useRoute()
     
     #rv{
         padding-top: 55px;
-        background-color: #EDF2F4;
     }
     /* .backhome{
         top:-100px;
