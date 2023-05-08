@@ -1,10 +1,10 @@
 <template>
-    <div class='pagebutton'>
+    <!-- <div class='pagebutton'>
         <el-button type="primary" round v-if="newslist.previous!=null" @click="getlivenews(resetapi(newslist.previous))">上一页</el-button>
         <el-button type="primary" round v-if="newslist.next!=null" @click="getlivenews(resetapi(newslist.next))">下一页</el-button>
-    </div>
-    <el-timeline class="timeline">
-        <el-timeline-item v-for="item in newslist.results" :id="'news' + item.id" :timestamp="item.pub_time"
+    </div> -->
+    <el-timeline class="timeline" v-infinite-scroll='load' infinite-scroll-immediate='false'>
+        <el-timeline-item v-for="item in newslist" :id="'news' + item.id" :timestamp="item.pub_time"
             placement="top">
             <el-card class="newsitem">
                 <el-link :href="'/livenews/'+item.id">
@@ -20,11 +20,17 @@
 import axios from 'axios';
 import {resetapi} from '../utils'
 
-let newslist = ref({})
+let newslist = ref([])
+var nexturl
 function getlivenews(url) {
     axios.get(url).then(response => {
-        newslist.value = response.data
+        newslist.value = newslist.value.concat(response.data.results);
+        nexturl = response.data.next;
     }).catch(error => { console.log(error) })
+}
+
+const load=()=>{
+    getlivenews(resetapi(nexturl))
 }
 // console.log(newslist)
 
@@ -32,10 +38,9 @@ getlivenews('/api/livenews')
 </script>
 
 <style scoped>
-.newsitem {
-    width: 90%
+.newsitem{
+    width: 90%;
 }
-
 .newsitem:hover {
     background-color: #B2DBBF;
     margin-left: 10px;
@@ -44,6 +49,8 @@ getlivenews('/api/livenews')
 .timeline{
     padding-top: 20px;
     margin-bottom: 40px;
+    width: 90vw;
+    margin-left: 8vw;
 }
 
 .pagebutton{

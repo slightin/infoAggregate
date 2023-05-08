@@ -8,7 +8,7 @@
         </el-card>
     </el-row> -->
     <div v-infinite-scroll='load' infinite-scroll-immediate='false'>
-        <el-row v-for="item in infolist.results" justify="center">
+        <el-row v-for="item in infolist" justify="center">
             <el-card :body-style="{ display: 'flex' }">
                 <img :src="item.imageurl" class="infoimg" />
                 <div class="infodiv">
@@ -29,12 +29,14 @@
 import axios from 'axios';
 import { resetapi } from '../utils';
 
-let infolist = ref({});
+let infolist = ref([]);
+var next
 function gethomeinfo(url) {
     axios
         .get(url)
         .then(response => {
-            infolist.value = response.data;
+            infolist.value = infolist.value.concat(response.data.results);
+            next = response.data.next;
         })
         .catch(error => {
             console.log(error);
@@ -42,7 +44,7 @@ function gethomeinfo(url) {
 }
 const load=()=>{
     console.log(infolist.value)
-    gethomeinfo(resetapi(infolist.value.next))
+    gethomeinfo(resetapi(next))
 }
 
 gethomeinfo('/api/maininfo');
