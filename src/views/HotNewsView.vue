@@ -55,6 +55,7 @@
     .icard:hover{
         background-color: #B2DBBF;
         padding-left: 10px;
+        /* box-shadow: var(--el-box-shadow-dark); */
         margin-left: 9px;
     }
     .icard:hover .rank {

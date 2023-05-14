@@ -21,7 +21,7 @@ const router = createRouter({
             component: InfoDetailVue
         },
         {
-            path: '/livenews',
+            path: '/live',
             name: 'livenews',
             // component: LiveNewsView,
             children: [{
@@ -37,7 +37,7 @@ const router = createRouter({
             ]
         },
         {
-            path: '/hotnews',
+            path: '/hot',
             name: 'hotnews',
             component: HotNewsView,
         },
@@ -48,6 +48,19 @@ const router = createRouter({
             // this generates a separate chunk (About.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import('../views/AboutView.vue')
+        },
+        {
+            path: '/search',
+            name: 'search',
+            // route level code-splitting
+            // this generates a separate chunk (About.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import('../views/SearchView.vue')
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'NotFound', 
+            component: () => import('@/views/404.vue')
         }
     ]
 })

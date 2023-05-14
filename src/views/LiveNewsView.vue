@@ -6,9 +6,16 @@
     <el-timeline class="timeline" v-infinite-scroll='load' infinite-scroll-immediate='false'>
         <el-timeline-item v-for="item in newslist" :id="'news' + item.id" :timestamp="item.pub_time"
             placement="top">
-            <el-card class="newsitem">
-                <el-link :href="'/livenews/'+item.id">
+            <el-card class="liveitem">
+                <template #header>
+                <!-- <el-link :href="'/live/'+item.id"> -->
                     {{ item.news_title }}
+                <!-- </el-link> -->
+                </template>
+                {{ item.news_content }}
+                <el-link v-if="item.link != ''" :href="item.link" target="_blank" type="primary">
+                    <i-ep-link/>
+                    原文链接
                 </el-link>
             </el-card>
         </el-timeline-item>
@@ -38,12 +45,14 @@ getlivenews('/api/livenews')
 </script>
 
 <style scoped>
-.newsitem{
+.liveitem{
     width: 90%;
 }
-.newsitem:hover {
+.liveitem:hover {
     background-color: #B2DBBF;
     margin-left: 10px;
+    box-shadow: var(--el-box-shadow-dark);
+    border-color: #B2DBBF;
 }
 
 .timeline{
@@ -62,4 +71,11 @@ getlivenews('/api/livenews')
     position: fixed;
     z-index: 100;
 }
+</style>
+<style>
+    .liveitem .el-card__header{
+        text-align: unset;
+        font-weight: bold;
+        font-size: large;
+    }
 </style>

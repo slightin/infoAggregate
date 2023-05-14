@@ -7,10 +7,10 @@ const route = useRoute()
 <template>
     <el-menu mode="horizontal" :default-active='route.path' router background-color="#545c64" text-color="#fff">
         <!-- <el-text id='logot'>聚合资讯</el-text> -->
-        <el-menu-item index="/" id="home">聚合资讯
+        <el-menu-item index="/" id="home">首页
         <!-- <div class='backhome'>回到首页</div> --></el-menu-item>
-        <el-menu-item index="/livenews">实时快讯</el-menu-item>
-        <el-menu-item index="/hotnews">聚合热榜</el-menu-item>
+        <el-menu-item index="/live">实时快讯</el-menu-item>
+        <el-menu-item index="/hot">聚合热榜</el-menu-item>
         <el-menu-item index="/about">测试用</el-menu-item>
     </el-menu>
     <div id='rv'>

@@ -23,6 +23,12 @@ axios
         info.value = response.data;
     })
     .catch(error => {
+        if (error.response.status=='404'){
+            info.value = {
+                title: '您访问的资讯不存在',
+                pub_time: new Date().toLocaleString()
+            }
+        }
         console.log(error);
     });
 </script>
@@ -30,6 +36,7 @@ axios
 <style scoped>
 .infocard {
     max-width: 80%;
+    min-width: 50%;
     margin-top: 60px;
     margin-bottom: 30px;
 }
