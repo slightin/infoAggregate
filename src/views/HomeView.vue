@@ -1,33 +1,35 @@
 <template>
-    <!-- <el-carousel height="150px">
-          <el-carousel-item v-for="item in 4" :key="item">
-            <h3 class="">{{ item }}</h3>
-          </el-carousel-item>
-    </el-carousel> -->
-    <el-tabs @tab-change="tabclick" tab-position="left" model-value="">
-        <el-tab-pane label="全部" name=""/>
-        <el-tab-pane v-for="item in cate" :label="item.name" :name="'?cate=' + item.id"/>
-    </el-tabs>
-    <el-row class = 'sbar' justify="center">
-    <el-input placeholder="搜索资讯" @click="toserach" @blur="toserach">
-        <template #prepend><i-ep-Search/></template>
-    </el-input>
+    <el-row justify="center">
+        <el-carousel height="150px" type="card">
+            <el-carousel-item v-for="item in carousel" :style="'background-image: url(' + item.iurl + ')'" class="caritem">
+                <el-link class="cartext" :href="'/info/' + item.id">{{ item.title }}</el-link>
+            </el-carousel-item>
+        </el-carousel>
     </el-row>
-    <div v-infinite-scroll='load' infinite-scroll-immediate='false'>
+    <el-tabs @tab-change="tabclick" tab-position="left" model-value="">
+        <el-tab-pane label="全部" name="" />
+        <el-tab-pane v-for="item in cate" :label="item.name" :name="'?cate=' + item.id" />
+    </el-tabs>
+    <el-row class="sbar" justify="center">
+        <el-input placeholder="搜索资讯" @click="toserach" @focus="toserach">
+            <template #prepend>
+                <i-ep-Search />
+            </template>
+        </el-input>
+    </el-row>
+    <div v-infinite-scroll="load" infinite-scroll-immediate="false">
         <el-row v-for="item in infolist" justify="center">
             <el-card :body-style="{ display: 'flex' }">
                 <el-image :src="item.imageurl" class="infoimg">
                     <template #error>
-                        <div class="errbox">
-                        <img src="../assets/404.svg">
-                        </div>
+                        <div class="errbox"><img src="../assets/404.svg" /></div>
                     </template>
                 </el-image>
                 <div class="infodiv">
                     <el-text>
                         <el-link :href="'/info/' + item.id">{{ item.title }}</el-link>
                         <br />
-                        <i class="fa-regular fa-clock" />
+                        <i class="iconfont icon-time" />
                         {{ item.pub_time }}
                     </el-text>
                 </div>
@@ -41,12 +43,27 @@
 import axios from 'axios';
 import { resetapi } from '../utils';
 import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus';
 const router = useRouter();
 
 let infolist = ref([]);
-const cate = ref([])
-var next
-function getcate(){
+const cate = ref([]);
+var next;
+const carousel = ref([]);
+
+const get_carousel = () => {
+    axios
+        .get('/api/get/carousel')
+        .then(response => {
+            carousel.value = response.data;
+        })
+        .catch(err => {
+            ElMessage('oops~ 出错了');
+            console.log(err);
+        });
+};
+
+function getcate() {
     axios
         .get('/api/category')
         .then(response => {
@@ -68,38 +85,54 @@ function gethomeinfo(url) {
             console.log(error);
         });
 }
-const toserach=()=>{
-    router.push('/search')
-}
+const toserach = () => {
+    router.push('/search');
+};
 
-const tabclick = (name)=>{
+const tabclick = name => {
     infolist.value = [];
-    gethomeinfo('/api/maininfo' + name)
-}
+    gethomeinfo('/api/maininfo' + name);
+};
 
-const load=()=>{
-    console.log(infolist.value)
-    gethomeinfo(resetapi(next))
-}
-getcate()
+const load = () => {
+    console.log(infolist.value);
+    gethomeinfo(resetapi(next));
+};
+get_carousel();
+getcate();
 gethomeinfo('/api/maininfo');
 </script>
 
 <style scoped>
+.caritem {
+    border-radius: 15px;
+}
+.cartext {
+    padding: 0 10px 0 10px;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.5);
+    color: black;
+    font-size: large;
+}
 .el-tabs {
     position: fixed;
     z-index: 100;
-}    
+}
 
 .el-card:hover {
     box-shadow: var(--el-box-shadow-dark);
     padding-right: 15px;
-    background-color: #B2DBBF;
-    border: #B2DBBF;
+    background-color: #b2dbbf;
+    border: #b2dbbf;
 }
 
-.el-input{
+.el-input {
     width: 50vw;
+}
+.el-carousel {
+    width: 60vw;
+    /* min-width: 100px; */
 }
 
 .infodiv {
@@ -114,8 +147,8 @@ gethomeinfo('/api/maininfo');
 .el-row {
     margin: 10px;
 }
-.fa-clock {
-    padding-right: 10px;
+.icon-time {
+    padding-right: 5px;
 }
 .errbox {
     width: 144px;
