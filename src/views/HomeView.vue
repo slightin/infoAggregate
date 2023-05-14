@@ -93,7 +93,7 @@ gethomeinfo('/api/maininfo');
 
 .el-card:hover {
     box-shadow: var(--el-box-shadow-dark);
-    padding-right: 10px;
+    padding-right: 15px;
     background-color: #B2DBBF;
     border: #B2DBBF;
 }
