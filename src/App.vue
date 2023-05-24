@@ -9,6 +9,7 @@ const route = useRoute()
         <!-- <el-text id='logot'>聚合资讯</el-text> -->
         <el-menu-item index="/" id="home">首页
         <!-- <div class='backhome'>回到首页</div> --></el-menu-item>
+        <el-menu-item index="/search">搜索</el-menu-item>
         <el-menu-item index="/live">实时快讯</el-menu-item>
         <el-menu-item index="/hot">聚合热榜</el-menu-item>
         <el-menu-item index="/about">测试用</el-menu-item>

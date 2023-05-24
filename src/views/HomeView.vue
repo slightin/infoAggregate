@@ -106,14 +106,20 @@ gethomeinfo('/api/maininfo');
 <style scoped>
 .caritem {
     border-radius: 15px;
+    background-size: cover;
+    border: solid #9CAFB7 0.5px;
+}
+.caritem.is-active{
+    box-shadow: var(--el-box-shadow-light);
 }
 .cartext {
     padding: 0 10px 0 10px;
     position: absolute;
     bottom: 0;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.7);
     color: black;
     font-size: large;
+    width: 100%;
 }
 .el-tabs {
     position: fixed;

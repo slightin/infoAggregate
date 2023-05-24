@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4045781 */
-  src: url('//at.alicdn.com/t/c/font_4045781_13oci47yu4.woff2?t=1682950880510') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4045781_13oci47yu4.woff?t=1682950880510') format('woff'),
-       url('//at.alicdn.com/t/c/font_4045781_13oci47yu4.ttf?t=1682950880510') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4045781_swwp0o7ez5h.woff2?t=1684472932680') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4045781_swwp0o7ez5h.woff?t=1684472932680') format('woff'),
+       url('//at.alicdn.com/t/c/font_4045781_swwp0o7ez5h.ttf?t=1684472932680') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sogou:before {
+  content: "\e628";
+}
+
+.icon-time:before {
+  content: "\e67a";
+}
+
+.icon-shijian:before {
+  content: "\e78f";
 }
 
 .icon-backtop:before {
@@ -23,10 +35,6 @@
 
 .icon-wangyi:before {
   content: "\e600";
-}
-
-.icon-time:before {
-  content: "\e630";
 }
 
 .icon-doubaifill:before {

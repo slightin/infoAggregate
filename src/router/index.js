@@ -2,23 +2,18 @@ import {
     createRouter,
     createWebHistory
 } from 'vue-router'
-import LiveNewsView from '../views/LiveNewsView.vue'
-import LiveNewsDetail from '../views/LiveNewsDetail.vue'
-import HotNewsView from '../views/HotNewsView.vue'
-import HomeView from '../views/HomeView.vue'
-import InfoDetailVue from '../views/InfoDetail.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [{
             path: '/',
             name: 'home',
-            component: HomeView
+            component: () => import('../views/HomeView.vue')
         },
         {
             path: '/info/:id(\\d+)',
             name: 'infodetail',
-            component: InfoDetailVue
+            component: () => import('../views/InfoDetail.vue')
         },
         {
             path: '/live',
@@ -27,19 +22,19 @@ const router = createRouter({
             children: [{
                     path: '',
                     name: 'livenews',
-                    component: LiveNewsView
+                    component: () => import('../views/LiveNewsView.vue')
                 },
                 {
                     path: ':id(\\d+)',
                     name: 'newsdetail',
-                    component: LiveNewsDetail
+                    component: () => import('../views/LiveNewsDetail.vue')
                 }
             ]
         },
         {
             path: '/hot',
             name: 'hotnews',
-            component: HotNewsView,
+            component: () => import('../views/HotNewsView.vue')
         },
         {
             path: '/about',

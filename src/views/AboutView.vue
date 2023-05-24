@@ -1,7 +1,8 @@
 <template>
     <div class="about">
-        <el-button @click="updatenews('hotnews', hottext)">更新热搜</el-button>
-        <el-button @click="updatenews('livenews', livetext)">更新快讯</el-button>
+        <el-button @click="updatenews('hotnews')">更新热搜</el-button>
+        <el-button @click="updatenews('livenews')">更新快讯</el-button>
+        <el-button @click="updatenews('maininfo')">更新主页</el-button>
         <br />
         <el-card class="wordcloud" :body-style="{ height: '100%', width:'100%'}"><img :src="'/api/wordcloud/hot?t='+new Date().getTime()" /></el-card>
     </div>
@@ -33,17 +34,9 @@ img {
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import qs from 'qs';
-import { ref } from 'vue';
 
-const hottext = ref('更新热搜');
-const livetext = ref('更新快讯');
 // getlivenews();
 
-function getlivenews() {
-    axios.get('/api/livenews').then(response => {
-        console.log(response);
-    });
-}
 
 function updatenews(cate) {
     ElMessage('更新中');
