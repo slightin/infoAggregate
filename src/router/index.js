@@ -37,6 +37,11 @@ const router = createRouter({
             component: () => import('../views/HotNewsView.vue')
         },
         {
+            path: '/wordcloud',
+            name: 'wordcloud',
+            component: () => import('../views/CloudView.vue')
+        },
+        {
             path: '/about',
             name: 'about',
             // route level code-splitting
@@ -55,7 +60,7 @@ const router = createRouter({
         {
             path: '/:pathMatch(.*)*',
             name: 'NotFound', 
-            component: () => import('@/views/404.vue')
+            component: () => import('@/views/404View.vue')
         }
     ]
 })
