@@ -75,4 +75,8 @@ function getcate() {
 :deep() #infobody p:has(img) {
     text-align: center;
 }
+
+:deep().video-wrapper {
+    display: none;
+}
 </style>
