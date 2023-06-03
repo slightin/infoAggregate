@@ -1,7 +1,11 @@
 <template>
     <el-row class="sbar" justify="center" :gutter="10">
         <el-col :span="12">
-            <el-input placeholder="搜索资讯" v-model="search" @input="dosearch" clearable focus="">
+            <el-input placeholder="搜索资讯" v-model="search" @input="dosearch" clearable 
+            :formatter="(value)=>value"
+            maxlength="30"
+            show-word-limit
+            :parser="(value)=>value.replace(/[^\w\u4E00-\u9FA5]/g,'')">
                 <template #prepend>
                     <i-ep-Search />
                 </template>
@@ -105,15 +109,13 @@ const shortcuts = [
 const dosearch = () => {
     infolist.value = [];
     let url = '/api/maininfo?title=' + search.value;
-    console.log(pubdate.value)
+    console.log(search.value)
     if (pubdate.value!=null) 
         url += '&pub_gt=' + pubdate.value[0] + ' 00:00' + '&pub_lt=' + pubdate.value[1] + ' 23:59'
     gethomeinfo(url);
     if (search.value !== '') word_highlight();
 };
-const change = () => {
-    console.log();
-};
+
 function gethomeinfo(url) {
     axios
         .get(url)
