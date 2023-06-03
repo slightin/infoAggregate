@@ -22,7 +22,7 @@
             <el-card :body-style="{ display: 'flex' }">
                 <el-image :src="item.imageurl" class="infoimg">
                     <template #error>
-                        <div class="errbox"><img src="../assets/404.svg" /></div>
+                        <div class="errimg"><img src="../assets/404.svg" /></div>
                     </template>
                 </el-image>
                 <div class="infodiv">
@@ -156,7 +156,7 @@ gethomeinfo('/api/maininfo');
 .icon-time {
     padding-right: 5px;
 }
-.errbox {
+.errimg {
     width: 144px;
     height: 88px;
     position: unset;
