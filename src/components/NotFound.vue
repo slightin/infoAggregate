@@ -1,7 +1,7 @@
 <template>
     <div id='box'>
     <img src="../assets/404.svg">
-    <h2>您访问的页面不存在</h2>
+    <slot></slot>
     <el-link href="/">返回首页</el-link>
     </div>
 </template>
