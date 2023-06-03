@@ -71,9 +71,8 @@ getlivenews('/api/livenews')
     position: fixed;
     z-index: 100;
 }
-</style>
-<style>
-    .liveitem .el-card__header{
+
+:deep() .liveitem .el-card__header{
         text-align: unset;
         font-weight: bold;
         font-size: large;

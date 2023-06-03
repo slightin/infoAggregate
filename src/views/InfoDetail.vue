@@ -1,6 +1,7 @@
 <template>
     <el-row justify="center" align="middle" style="height:100%;">
-        <el-card class="infocard">
+        <NotFound v-if="found404"><h2>你访问的资讯不存在</h2></NotFound>
+        <el-card v-else class="infocard">
             <template #header>
                 <h1>{{ info.title }}</h1>
                 <i class="iconfont icon-time"></i>
@@ -15,10 +16,12 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import axios from 'axios';
+import NotFound from "../components/NotFound.vue"
 
 const route = useRoute();
 const info = ref({});
 const cate = ref();
+const found404 = ref(false)
 axios
     .get('/api/maininfo/' + route.params.id)
     .then(response => {
@@ -27,10 +30,7 @@ axios
     })
     .catch(error => {
         if (error.response.status == '404') {
-            info.value = {
-                title: '您访问的资讯不存在',
-                pub_time: new Date().toLocaleString()
-            };
+            found404.value = true
         }
         console.log(error);
     });
@@ -64,16 +64,15 @@ function getcate() {
 .el-card__header {
     text-align: center;
 }
-</style>
-<style>
-#infobody {
+
+:deep() #infobody {
     padding: 50px;
 }
-#infobody p {
+:deep() #infobody p {
     text-indent: 2em;
     font-size: 18px;
 }
-#infobody p:has(img) {
+:deep() #infobody p:has(img) {
     text-align: center;
 }
 </style>
