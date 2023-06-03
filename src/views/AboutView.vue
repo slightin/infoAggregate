@@ -4,21 +4,20 @@
         <el-button @click="updatenews('livenews')">更新快讯</el-button>
         <el-button @click="updatenews('maininfo')">更新主页</el-button>
         <br />
-        <el-card class="wordcloud" :body-style="{ height: '100%', width:'100%'}"><img :src="'/api/wordcloud/hot?t='+new Date().getTime()" /></el-card>
     </div>
+    <el-card class="wordcloud" :body-style="{ height: '100%', width: '100%' }">
+        <el-image :src="'/api/wordcloud/hot?t=' + new Date().getTime()"></el-image>
+    </el-card>
 </template>
 
 <style scoped>
-.about {
-    height: calc(100vh - 55px);
-}
 .wordcloud {
     height: 70%;
     width: 60%;
 }
-img {
-    width:100%;
-    height:100%;
+deep() img {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 /* @media (min-width: 1024px) {
@@ -36,7 +35,6 @@ import { ElMessage } from 'element-plus';
 import qs from 'qs';
 
 // getlivenews();
-
 
 function updatenews(cate) {
     ElMessage('更新中');
