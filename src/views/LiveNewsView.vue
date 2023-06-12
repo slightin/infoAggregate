@@ -53,6 +53,7 @@ getlivenews('/api/livenews')
     margin-left: 10px;
     box-shadow: var(--el-box-shadow-dark);
     border-color: #B2DBBF;
+    border-radius: 10px;
 }
 
 .timeline{

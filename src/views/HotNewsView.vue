@@ -58,8 +58,11 @@ gethot('weibo');
     background-color: #4a525a;
 }
 .el-menu-item.is-active {
-    /* background-color: #F4A261; */
+    color: #F4A261;
     border-right: 4px solid var(--el-menu-active-color);
+}
+.el-menu-item {
+    padding-left: 35px !important;
 }
 .icard {
     margin: 10px;

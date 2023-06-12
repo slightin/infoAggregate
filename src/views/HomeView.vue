@@ -58,7 +58,7 @@ const get_carousel = () => {
             carousel.value = response.data;
         })
         .catch(err => {
-            ElMessage('oops~ 出错了');
+            ElMessage.error('oops~ 出错了');
             console.log(err);
         });
 };
@@ -70,6 +70,7 @@ function getcate() {
             cate.value = response.data;
         })
         .catch(error => {
+            ElMessage.error("oops~ 出错啦")
             console.log(error);
         });
 }
